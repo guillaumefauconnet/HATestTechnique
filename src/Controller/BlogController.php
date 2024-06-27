@@ -30,7 +30,6 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Bundle\SecurityBundle\Security;
 
 /**
  * Controller used to manage blog contents in the public part of the site.
@@ -98,7 +97,7 @@ final class BlogController extends AbstractController
         if (!$this->isGranted('IS_AUTHENTICATED_FULLY') && $post->isAdminOnly()) {
             $this->denyAccessUnlessGranted(PostVoter::ADMIN_ONLY, $post);
         }
-        if($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
             $this->denyAccessUnlessGranted(PostVoter::ADMIN_ONLY, $post);
         }
 
