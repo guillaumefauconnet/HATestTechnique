@@ -18,6 +18,7 @@ use App\Event\CommentCreatedEvent;
 use App\Form\CommentType;
 use App\Repository\PostRepository;
 use App\Repository\TagRepository;
+use App\Security\PostVoter;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -47,7 +48,7 @@ final class BlogController extends AbstractController
      */
     #[Route('/', name: 'blog_index', defaults: ['page' => '1', '_format' => 'html'], methods: ['GET'])]
     #[Route('/rss.xml', name: 'blog_rss', defaults: ['page' => '1', '_format' => 'xml'], methods: ['GET'])]
-    #[Route('/page/{page}', name: 'blog_index_paginated', defaults: ['_format' => 'html'], requirements: ['page' => Requirement::POSITIVE_INT], methods: ['GET'])]
+    #[Route('/page/{page}', name: 'blog_index_paginated', requirements: ['page' => Requirement::POSITIVE_INT], defaults: ['_format' => 'html'], methods: ['GET'])]
     #[Cache(smaxage: 10)]
     public function index(Request $request, int $page, string $_format, PostRepository $posts, TagRepository $tags): Response
     {
@@ -93,6 +94,12 @@ final class BlogController extends AbstractController
         //
         // You can also leverage Symfony's 'dd()' function that dumps and
         // stops the execution
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY') && $post->isAdminOnly()) {
+            $this->denyAccessUnlessGranted(PostVoter::ADMIN_ONLY, $post);
+        }
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $this->denyAccessUnlessGranted(PostVoter::ADMIN_ONLY, $post);
+        }
 
         return $this->render('blog/post_show.html.twig', ['post' => $post]);
     }

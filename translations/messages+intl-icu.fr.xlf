@@ -161,6 +161,10 @@
                 <source>action.back_to_list</source>
                 <target>Retour à la liste des articles</target>
             </trans-unit>
+            <trans-unit id="action.back_to_previous">
+                <source>action.back_to_previous</source>
+                <target>Retour</target>
+            </trans-unit>
             <trans-unit id="action.publish_comment">
                 <source>action.publish_comment</source>
                 <target>Publier</target>
@@ -185,6 +189,10 @@
                 <source>action.change_password</source>
                 <target>Modifier le mot de passe</target>
             </trans-unit>
+            <trans-unit id="action.create_user">
+                <source>action.create_user</source>
+                <target>Créer un utilisateur</target>
+            </trans-unit>
 
             <trans-unit id="label.title">
                 <source>label.title</source>
@@ -204,7 +212,7 @@
             </trans-unit>
             <trans-unit id="label.username">
                 <source>label.username</source>
-                <target>Identifiant</target>
+                <target>Nom d'utilisateur</target>
             </trans-unit>
             <trans-unit id="label.fullname">
                 <source>label.fullname</source>
@@ -254,9 +262,25 @@
                 <source>label.tags</source>
                 <target>Tags</target>
             </trans-unit>
+            <trans-unit id="label.adminOnly">
+                <source>label.adminOnly</source>
+                <target>Article visible uniquement par les administrateurs</target>
+            </trans-unit>
+            <trans-unit id="label.adminOnlyShort">
+                <source>label.adminOnlyShort</source>
+                <target>Admin seulement</target>
+            </trans-unit>
             <trans-unit id="label.actions">
                 <source>label.actions</source>
                 <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="label.yes">
+                <source>label.yes</source>
+                <target>Oui</target>
+            </trans-unit>
+            <trans-unit id="label.no">
+                <source>label.no</source>
+                <target>Non</target>
             </trans-unit>
             <trans-unit id="title.post_new">
                 <source>title.post_new</source>
@@ -477,6 +501,38 @@
             <trans-unit id="instructions.question3.details">
                 <source>instructions.question3.details</source>
                 <target><![CDATA[<ul><li>Dans le formulaire de création d'un nouvel article <strong>(/admin/post/new)</strong>, ajouter une case à cochée "Article visible uniquement par les administrateurs".</li><li>Dans la liste des articles <strong>(/blog/)</strong>, si l'on n'est pas connecté ou si l'on ne dispose pas d'un profil administrateur, ne pas afficher les articles administrateurs.</li><li>S'assurer que l'on ne puisse pas accéder à un article administrateur en saisissant l'adresse pour y accéder directement <strong>(/blog/posts/{article_slug})</strong>.</li></ul>]]></target>
+            </trans-unit>
+            <trans-unit id="user.list.title">
+                <source>user.list.title</source>
+                <target>Liste des membres</target>
+            </trans-unit>
+            <trans-unit id="user.list.email">
+                <source>user.list.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="user.list.fullname">
+                <source>user.list.fullname</source>
+                <target>Prénom Nom</target>
+            </trans-unit>
+            <trans-unit id="user.list.username">
+                <source>user.list.username</source>
+                <target>Nom d'utilisateur</target>
+            </trans-unit>
+            <trans-unit id="current_user">
+                <source>current_user</source>
+                <target>Vous</target>
+            </trans-unit>
+            <trans-unit id="user.created.successfully">
+                <source>user.created.successfully</source>
+                <target>Nouvel utilisateur créé avec succès.</target>
+            </trans-unit>
+            <trans-unit id="title.user_new">
+                <source>title.user_new</source>
+                <target>Ajouter un nouvel utilisateur</target>
+            </trans-unit>
+            <trans-unit id="label.create_user">
+                <source>label.create_user</source>
+                <target>Créer un nouvel utilisateur.</target>
             </trans-unit>
         </body>
     </file>

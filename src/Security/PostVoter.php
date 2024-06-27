@@ -13,6 +13,7 @@ namespace App\Security;
 
 use App\Entity\Post;
 use App\Entity\User;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
@@ -33,11 +34,18 @@ final class PostVoter extends Voter
     public const DELETE = 'delete';
     public const EDIT = 'edit';
     public const SHOW = 'show';
+    public const ADMIN_ONLY = 'admin_only';
+
+    public function __construct(
+        private Security $security,
+    )
+    {
+    }
 
     protected function supports(string $attribute, mixed $subject): bool
     {
         // this voter is only executed on Post objects and for three specific permissions
-        return $subject instanceof Post && \in_array($attribute, [self::SHOW, self::EDIT, self::DELETE], true);
+        return $subject instanceof Post && \in_array($attribute, [self::SHOW, self::EDIT, self::DELETE, self::ADMIN_ONLY], true);
     }
 
     /**
@@ -55,6 +63,21 @@ final class PostVoter extends Voter
         // the logic of this voter is pretty simple: if the logged-in user is the
         // author of the given blog post, grant permission; otherwise, deny it.
         // (the supports() method guarantees that $post is a Post object)
-        return $user === $post->getAuthor();
+
+        return match ($attribute) {
+            self::ADMIN_ONLY => $this->canViewAdminOnlyPost($post),
+            default => $user === $post->getAuthor()
+        };
+    }
+
+    private function canViewAdminOnlyPost(Post $post): bool
+    {
+        if ($post->isAdminOnly() and $this->security->isGranted('ROLE_ADMIN')) {
+            return true;
+        }
+        if (!$post->isAdminOnly()) {
+            return true;
+        }
+        return false;
     }
 }

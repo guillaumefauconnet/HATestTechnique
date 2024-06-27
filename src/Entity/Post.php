@@ -81,6 +81,9 @@ class Post
     #[Assert\Count(max: 4, maxMessage: 'post.too_many_tags')]
     private Collection $tags;
 
+    #[ORM\Column]
+    private ?bool $adminOnly = null;
+
     public function __construct()
     {
         $this->publishedAt = new \DateTimeImmutable();
@@ -195,5 +198,17 @@ class Post
     public function getTags(): Collection
     {
         return $this->tags;
+    }
+
+    public function isAdminOnly(): ?bool
+    {
+        return $this->adminOnly;
+    }
+
+    public function setAdminOnly(bool $adminOnly): static
+    {
+        $this->adminOnly = $adminOnly;
+
+        return $this;
     }
 }

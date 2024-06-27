@@ -100,6 +100,10 @@
                 <source>title.change_password</source>
                 <target>Change password</target>
             </trans-unit>
+            <trans-unit id="action.create_user">
+                <source>action.create_user</source>
+                <target>Create a new user</target>
+            </trans-unit>
 
             <trans-unit id="action.show">
                 <source>action.show</source>
@@ -160,6 +164,10 @@
             <trans-unit id="action.back_to_list">
                 <source>action.back_to_list</source>
                 <target>Back to the post list</target>
+            </trans-unit>
+            <trans-unit id="action.back_to_previous">
+                <source>action.back_to_previous</source>
+                <target>Previous</target>
             </trans-unit>
             <trans-unit id="action.publish_comment">
                 <source>action.publish_comment</source>
@@ -254,9 +262,25 @@
                 <source>label.tags</source>
                 <target>Tags</target>
             </trans-unit>
+            <trans-unit id="label.adminOnly">
+                <source>label.adminOnly</source>
+                <target>Post only visible by administrators</target>
+            </trans-unit>
+            <trans-unit id="label.adminOnlyShort">
+                <source>label.adminOnlyShort</source>
+                <target>Admin Only</target>
+            </trans-unit>
             <trans-unit id="label.actions">
                 <source>label.actions</source>
                 <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="label.yes">
+                <source>label.yes</source>
+                <target>Yes</target>
+            </trans-unit>
+            <trans-unit id="label.no">
+                <source>label.no</source>
+                <target>No</target>
             </trans-unit>
             <trans-unit id="title.post_new">
                 <source>title.post_new</source>
@@ -481,6 +505,38 @@
             <trans-unit id="instructions.question3.details">
                 <source>instructions.question3.details</source>
                 <target><![CDATA[<ul><li>In the form for creating a new article <strong>(/admin/post/new)</strong>, add a checkbox "Article visible only to administrators".</li><li>In the list of <strong>(/blog/)</strong> articles, if you are not logged in or do not have an administrator profile, do not display administrator articles.</li><li>Ensure that an administrator article cannot be accessed by entering the address to access it directly <strong>(/blog/posts/{article_slug})</strong>.</li></ul>]]></target>
+            </trans-unit>
+            <trans-unit id="user.list.title">
+                <source>user.list.title</source>
+                <target>Members List</target>
+            </trans-unit>
+            <trans-unit id="user.list.email">
+                <source>user.list.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="user.list.fullname">
+                <source>user.list.fullname</source>
+                <target>FullName</target>
+            </trans-unit>
+            <trans-unit id="user.list.username">
+                <source>user.list.username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="current_user">
+                <source>current_user</source>
+                <target>You</target>
+            </trans-unit>
+            <trans-unit id="user.created.successfully">
+                <source>user.created.successfully</source>
+                <target>New user created successfully.</target>
+            </trans-unit>
+            <trans-unit id="title.user_new">
+                <source>title.user_new</source>
+                <target>Add a new user</target>
+            </trans-unit>
+            <trans-unit id="label.create_user">
+                <source>label.create_user</source>
+                <target>Create a new user</target>
             </trans-unit>
         </body>
     </file>
